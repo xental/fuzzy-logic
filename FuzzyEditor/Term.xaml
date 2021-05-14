@@ -1,0 +1,53 @@
+﻿<Window x:Class="FuzzyEditor.Term"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FuzzyEditor" xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="Term" Height="350" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Имя" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox Name="Term_name" Grid.Row="1"/>
+            <Label Content="Функция" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <ComboBox Name="Term_function" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" SelectionChanged="Term_function_SelectionChanged"/>
+            <Label Name="Func_label"  Content="Function args" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox Name="Term_func_params" Grid.Row="7"/>
+            <Button Name="Term_show" Grid.Row="9" Content="Показать график" Margin="60,0,60,0" Click="Term_show_Click"/>
+            <Button Name="Term_save" Grid.Row="11" Content="Сохранить" Margin="60,0,60,0" Click="Term_save_Click"/>
+        </Grid>
+
+        <oxy:PlotView Name="Term_plot" Grid.Row="1" Grid.Column="3" Model="{Binding Source={x:Static local:Bindings.MyTermModel}}">
+        </oxy:PlotView>
+    </Grid>
+</Window>
